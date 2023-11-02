@@ -1,0 +1,59 @@
+<!-- Modal toggle -->
+<button [routerLink]="['/products','new']"
+    class="my-2 mx-auto block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+    Add New Product
+</button>
+
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-center text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    id
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    description
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Price
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    quantity
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    action
+                </th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                *ngFor="let product of products;let i=index">
+                <td class="w-4 p-4 ">
+                    {{i+1}}
+                </td>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{product.name}}
+                </th>
+                <td class="px-6 py-4">
+                    {{product.description}}
+                </td>
+                <td class="px-6 py-4">
+                    ${{product.price}}
+                </td>
+                <td class="px-6 py-4">
+                    {{product.quantity}}
+                </td>
+                <td class="px-6 py-4">
+                        <ng-icon class="text-2xl mx-2 text-green-600 dark:text-green-500 hover:underline" name="bootstrapInfoCircle" [routerLink]="['/products','details',product.id]" ></ng-icon>
+                        <ng-icon  class="text-2xl mx-2 text-yellow-300 dark:text-yellow-300 hover:underline" name="bootstrapPencilSquare" [routerLink]="['/products','edit',product.id]"></ng-icon>
+                        <ng-icon class="text-2xl mx-2 text-red-600 dark:text-red-500 hover:underline" name="bootstrapTrash3" (click)="delete(product.id)"></ng-icon>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
